@@ -19,7 +19,11 @@ A voice AI agent that renders rich, interactive UI in real time using [LiveKit](
 ### Install
 
 ```bash
+# Frontend
 pnpm install
+
+# Agent (separate project in livekit-agent/)
+cd livekit-agent && pnpm install
 ```
 
 ### Configure
@@ -39,10 +43,20 @@ Start the Next.js dev server and the agent in separate terminals:
 pnpm dev
 
 # Terminal 2 — voice agent
-pnpm agent
+cd livekit-agent && pnpm agent dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) and click **Start**.
+
+### Deploy agent to LiveKit Cloud
+
+```bash
+cd livekit-agent
+lk cloud auth
+lk agent create --secrets-file=../.env
+```
+
+Subsequent deploys: `cd livekit-agent && lk agent deploy`
 
 ## License
 

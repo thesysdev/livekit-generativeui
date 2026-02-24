@@ -11,7 +11,7 @@ import {
 import * as livekit from "@livekit/agents-plugin-livekit";
 import * as silero from "@livekit/agents-plugin-silero";
 import { fileURLToPath } from "node:url";
-import { createVoiceAgent } from "./agent";
+import { createVoiceAgent } from "./agent.js";
 
 export default defineAgent({
   prewarm: async (proc: JobProcess) => {

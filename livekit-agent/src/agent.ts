@@ -1,7 +1,7 @@
 import { voice, llm } from "@livekit/agents";
 import { z } from "zod";
-import Exa from "exa-js";
-import { ShowUITool } from "./show-ui";
+import { Exa } from "exa-js";
+import { ShowUITool } from "./show-ui.js";
 
 type AgentSession = InstanceType<typeof voice.AgentSession>;
 
@@ -153,7 +153,7 @@ class VoiceAgent extends voice.Agent {
 
               const formatted = results.results
                 .map(
-                  (r, i) =>
+                  (r: any, i: number) =>
                     `[${i + 1}] ${r.title}\n${r.url}\n${r.text?.slice(0, 500) ?? ""}`,
                 )
                 .join("\n\n");

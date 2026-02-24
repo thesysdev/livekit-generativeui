@@ -20,8 +20,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "agent": "tsx src/livekit-agent/index.ts"
+    "start": "next start"
   },
   "dependencies": {
     "@crayonai/react-core": "^0.7.7",

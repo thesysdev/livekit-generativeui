@@ -1,0 +1,5 @@
+[project]
+  subdomain = "local-dev-6l2qilwn"
+
+[agent]
+  id = "CA_dLp4eDQyTkkD"
