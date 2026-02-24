@@ -1,0 +1,35 @@
+name: Deploy LiveKit Agent
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "livekit-agent/**"
+
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: livekit-agent
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install LiveKit CLI
+        run: |
+          curl -sSL https://get.livekit.io/cli | bash
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Configure LiveKit project
+        run: |
+          lk project add deploy \
+            --url "${{ secrets.LIVEKIT_URL }}" \
+            --api-key "${{ secrets.LIVEKIT_API_KEY }}" \
+            --api-secret "${{ secrets.LIVEKIT_API_SECRET }}" \
+            --default
+
+      - name: Deploy agent
+        run: lk agent deploy

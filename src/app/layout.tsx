@@ -4,9 +4,9 @@ import "./globals.css";
 import "./overrides.css";
 
 export const metadata: Metadata = {
-  title: "Tool Router + Compact Demo",
+  title: "Voice Generative UI",
   description:
-    "Flight & hotel booking agent with tool routing and conversation compaction",
+    "Voice AI agent with real-time generative UI powered by LiveKit and Thesys",
 };
 
 export default function RootLayout({
