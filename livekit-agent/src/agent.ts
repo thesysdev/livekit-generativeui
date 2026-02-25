@@ -180,7 +180,7 @@ class VoiceAgent extends voice.Agent {
               .describe("Number of images per query (default 1, max 5)"),
           }),
           execute: async ({ queries, count }) => {
-            const n = count ?? 1;
+            const n = count ?? 5;
             const results = await Promise.all(
               queries.map(async (query) => {
                 try {
