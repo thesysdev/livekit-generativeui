@@ -1,0 +1,87 @@
+.root {
+  flex: 1;
+  overflow: auto;
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.content {
+  width: 100%;
+  max-width: 900px;
+}
+
+.emptyState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--t-sub);
+  font-size: 16px;
+}
+
+.emptyText {
+  text-align: center;
+  line-height: 1.55;
+}
+
+/* ── Connecting indicator ── */
+
+.connecting {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.connectingText {
+  font-size: 16px;
+  color: var(--t-sub);
+}
+
+.connectingSub {
+  font-size: 13px;
+  color: var(--t-sub);
+  opacity: 0.6;
+}
+
+/* ── Skeleton ── */
+
+.skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 8px;
+}
+
+.skelLine {
+  height: 24px;
+  border-radius: 6px;
+  background: var(--t-skeletonA);
+  animation: pulse-skel 1.4s ease-in-out infinite;
+}
+
+.skelCards {
+  display: flex;
+  gap: 16px;
+}
+
+.skelCard {
+  flex: 1;
+  height: 180px;
+  border-radius: 12px;
+  background: var(--t-skeletonA);
+  animation: pulse-skel 1.4s ease-in-out infinite;
+}
+
+.skelLineB {
+  height: 16px;
+  border-radius: 6px;
+  background: var(--t-skeletonB);
+  animation: pulse-skel 1.4s ease-in-out infinite;
+}
+
+@keyframes pulse-skel {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.5; }
+}

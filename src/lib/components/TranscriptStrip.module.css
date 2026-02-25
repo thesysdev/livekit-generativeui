@@ -1,0 +1,54 @@
+.root {
+  padding: 10px 24px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: var(--t-transcriptBg);
+  border-top: 1px solid var(--t-transcriptBorder);
+}
+
+.row {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  min-height: 20px;
+}
+
+.label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  min-width: 22px;
+  padding-bottom: 2px;
+  flex-shrink: 0;
+}
+
+.userLabel  { color: var(--t-userLabel); }
+.agentLabel { color: var(--t-agentLabel); }
+
+.rowContent {
+  max-height: calc(2 * 1.5em);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.userText  { color: var(--t-userText); }
+.agentText { color: var(--t-agentText); }
+
+.cursor {
+  display: inline-block;
+  width: 1.5px;
+  height: 13px;
+  background: var(--t-agentLabel);
+  margin-left: 1px;
+  vertical-align: middle;
+  transition: opacity 0.1s;
+}
+
+.cursorOn  { opacity: 1; }
+.cursorOff { opacity: 0; }

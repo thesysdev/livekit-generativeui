@@ -1,0 +1,261 @@
+.root {
+  flex-shrink: 0;
+  background: var(--t-barBg);
+  border-top: 1px solid var(--t-barBorder);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.controls {
+  position: relative;
+  padding: 16px 24px 20px;
+}
+
+/* ── Wide-only elements (chips, dividers, theme toggle) ── */
+
+.wideOnly {
+  display: none;
+}
+
+@media (min-width: 1200px) {
+  .wideOnly {
+    display: flex;
+  }
+}
+
+/* ── Theme toggle (left edge) ── */
+
+.themeWrap {
+  position: absolute;
+  left: 24px;
+  top: 0;
+  bottom: 0;
+  align-items: center;
+  z-index: 2;
+}
+
+/* ── Center row ── */
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* ── Tray button (theme toggle, reset) ── */
+
+.trayBtn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--t-btnBorder);
+  background: var(--t-btnBg);
+  color: var(--t-sub);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.18s;
+}
+
+.trayBtn:hover {
+  background: var(--t-btnBgHover);
+  border-color: var(--t-btnBorderHover);
+  color: var(--t-text);
+}
+
+.trayBtn:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 3px;
+}
+
+.trayBtnLg {
+  width: 44px;
+  height: 44px;
+}
+
+.themeFlip {
+  display: flex;
+  animation: theme-flip 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── Dividers ── */
+
+.dividerLeft,
+.dividerRight {
+  position: absolute;
+  pointer-events: none;
+  width: 222px;
+  top: 50%;
+  height: 1px;
+  background: var(--t-divider);
+}
+
+.dividerLeft  { left: calc(50% - 346px); }
+.dividerRight { left: calc(50% + 124px); }
+
+/* ── Status chips ── */
+
+.chip {
+  align-items: center;
+  gap: 7px;
+  padding: 4px 0;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  user-select: none;
+  letter-spacing: 0.01em;
+  position: absolute;
+}
+
+.chipLeft {
+  left: calc(50% - 370px);
+  transform: translateX(-100%);
+  animation: chip-pop-l 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.chipRight {
+  left: calc(50% + 370px);
+  animation: chip-pop-r 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.connConnecting   { color: var(--t-connConnecting); }
+.connConnected    { color: var(--t-connConnected); }
+.connDisconnected { color: var(--t-connDisconnected); }
+.agentSpeaking    { color: var(--t-agentSpeaking); }
+.agentListening   { color: var(--t-agentListening); }
+.agentThinking    { color: var(--t-agentThinking); }
+
+.blinkDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: currentColor;
+  animation: blink-dot 1.7s ease-in-out infinite;
+}
+
+/* ── End button ── */
+
+.endBtn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  flex-shrink: 0;
+  background: rgba(239, 68, 68, 0.14);
+  color: #ef4444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.18s;
+}
+
+.endBtn:hover {
+  background: #dc2626;
+  color: #ffffff;
+  box-shadow: 0 4px 20px rgba(220, 38, 38, 0.44);
+}
+
+.endBtn:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 3px;
+}
+
+/* ── Mic toggle ── */
+
+.micWrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.micRing {
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  pointer-events: none;
+  border: 2px solid color-mix(in srgb, var(--ring) 33%, transparent);
+  animation: ear-expand 1.9s ease-out infinite;
+}
+
+.micBtn {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 2.5px solid var(--ring, transparent);
+  background: var(--t-startBg);
+  color: var(--t-startText);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s, transform 0.16s,
+              border-color 0.3s, box-shadow 0.3s;
+}
+
+.micBtn:not(.micMuted):not(.micDisabled) {
+  box-shadow: var(--t-micShadow);
+}
+
+.micBtn:hover:not(.micDisabled) {
+  transform: scale(1.06);
+}
+
+.micBtn:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 3px;
+}
+
+.micMuted {
+  background: #9ca3af;
+  color: #fff;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.micDisabled {
+  background: #6b7280;
+  color: #d1d5db;
+  opacity: 0.6;
+  cursor: not-allowed;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* ── Keyframes ── */
+
+@keyframes chip-pop-l {
+  from { opacity: 0; transform: translateX(-100%) scale(0.8); }
+  to   { opacity: 1; transform: translateX(-100%) scale(1); }
+}
+
+@keyframes chip-pop-r {
+  from { opacity: 0; transform: scale(0.8); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes blink-dot {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.18; }
+}
+
+@keyframes theme-flip {
+  0%   { transform: rotate(0) scale(1); }
+  45%  { transform: rotate(200deg) scale(1.25); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+@keyframes ear-expand {
+  0%   { transform: scale(1); opacity: 0.65; }
+  100% { transform: scale(2.4); opacity: 0; }
+}

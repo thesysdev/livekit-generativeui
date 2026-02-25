@@ -1,0 +1,59 @@
+.placeholder {
+  min-height: 100vh;
+}
+
+.root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--t-bg);
+  color: var(--t-text);
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+  transition: background 0.3s, color 0.3s;
+}
+
+.blob1,
+.blob2 {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.blob1 {
+  top: -130px;
+  left: -130px;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, var(--t-blob1) 0%, transparent 68%);
+}
+
+.blob2 {
+  bottom: -100px;
+  right: -100px;
+  width: 440px;
+  height: 440px;
+  background: radial-gradient(circle, var(--t-blob2) 0%, transparent 68%);
+}
+
+.connected {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  animation: fade-in 0.45s ease;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.93) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

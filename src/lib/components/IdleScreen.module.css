@@ -1,0 +1,172 @@
+.root {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: fade-in 0.45s ease;
+}
+
+/* ── Theme toggle (top-right corner) ── */
+
+.themeToggle {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  z-index: 10;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--t-btnBorder);
+  background: var(--t-btnBg);
+  color: var(--t-sub);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.18s;
+}
+
+.themeToggle:hover {
+  background: var(--t-btnBgHover);
+  border-color: var(--t-btnBorderHover);
+  color: var(--t-text);
+}
+
+.themeToggle:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 3px;
+}
+
+.themeFlip {
+  display: flex;
+  animation: theme-flip 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── Hero ── */
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 68px;
+}
+
+.title {
+  margin: 0;
+  font-size: 58px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  padding-bottom: 0.12em;
+  background: var(--t-shimmer);
+  background-size: 350% 350%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 14s linear infinite;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--t-sub);
+  font-size: 16.5px;
+  text-align: center;
+  line-height: 1.55;
+  letter-spacing: 0.005em;
+}
+
+/* ── Start button ── */
+
+.startBtn {
+  padding: 17px 52px;
+  border-radius: 999px;
+  border: none;
+  background: var(--t-startBg);
+  color: var(--t-startText);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: var(--t-startShadow);
+  cursor: pointer;
+  transition: transform 0.16s, box-shadow 0.16s;
+}
+
+.startBtn:not(.loading):hover {
+  transform: scale(1.04);
+  box-shadow: var(--t-startShadowHov);
+}
+
+.startBtn:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 3px;
+}
+
+.startBtn.loading {
+  opacity: 0.85;
+  cursor: default;
+  box-shadow: none;
+}
+
+/* ── Starter suggestions ── */
+
+.starters {
+  position: absolute;
+  bottom: 52px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.startersLabel {
+  color: var(--t-sub);
+  font-size: 14.5px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+}
+
+.starterBtn {
+  background: none;
+  border: none;
+  color: var(--t-sub);
+  font-size: 13.5px;
+  font-style: italic;
+  letter-spacing: 0.005em;
+  padding: 4px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: color 0.18s, background 0.18s;
+}
+
+.starterBtn:hover {
+  background: var(--t-hoverBgFaint);
+  color: var(--t-subHover);
+}
+
+.starterBtn:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 3px;
+}
+
+/* ── Keyframes ── */
+
+@keyframes fade-in {
+  from { opacity: 0; transform: scale(0.93) translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -350% -350%; }
+  100% { background-position: 350% 350%; }
+}
+
+@keyframes theme-flip {
+  0%   { transform: rotate(0) scale(1); }
+  45%  { transform: rotate(200deg) scale(1.25); }
+  100% { transform: rotate(360deg) scale(1); }
+}
