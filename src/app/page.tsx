@@ -88,11 +88,18 @@ function VoiceUI() {
   const handleAction = useCallback(
     (event: any) => {
       console.log("Action received:", event);
-      if (event.type === "continue_conversation") {
-        const message = event.params?.llmFriendlyMessage;
-        if (message) {
-          setIsProcessingAction(true);
-          sendChatMessage(message);
+      switch (event.type) {
+        case "open_url":
+          window.open(event.params?.url, "_blank", "noopener,noreferrer");
+          break;
+        case "continue_conversation":
+        default: {
+          const message = event.params?.llmFriendlyMessage;
+          if (message) {
+            setIsProcessingAction(true);
+            sendChatMessage(message);
+          }
+          break;
         }
       }
     },
