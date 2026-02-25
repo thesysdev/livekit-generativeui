@@ -1,5 +1,5 @@
 [project]
-  subdomain = "local-dev-6l2qilwn"
+  subdomain = "prod-87bkq8ew"
 
 [agent]
-  id = "CA_dLp4eDQyTkkD"
+  id = "CA_nD9UcjrtHQbR"

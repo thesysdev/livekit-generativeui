@@ -1,6 +1,5 @@
 import {
   type JobContext,
-  type JobProcess,
   ServerOptions,
   cli,
   defineAgent,
@@ -14,15 +13,8 @@ import { fileURLToPath } from "node:url";
 import { createVoiceAgent } from "./agent.js";
 
 export default defineAgent({
-  prewarm: async (proc: JobProcess) => {
-    try {
-      proc.userData.vad = await silero.VAD.load();
-    } catch (err) {
-      console.error("[prewarm] Failed to load VAD model:", err);
-      throw err;
-    }
-  },
   entry: async (ctx: JobContext) => {
+    const vad = await silero.VAD.load();
     const session = new voice.AgentSession({
       stt: new inference.STT({ model: "deepgram/nova-3", language: "multi" }),
       llm: new inference.LLM({ model: "google/gemini-3-flash" }),
@@ -31,7 +23,7 @@ export default defineAgent({
         voice: "9626c31c-bec5-4cca-baa8-f8ba9e84c8bc",
       }),
       turnDetection: new livekit.turnDetector.MultilingualModel(),
-      vad: ctx.proc.userData.vad! as silero.VAD,
+      vad,
       voiceOptions: {
         allowInterruptions: true,
         preemptiveGeneration: true,
